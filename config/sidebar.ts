@@ -13,9 +13,10 @@ import {
 
 export const data = {
   user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
+    name: "Ajay Singh",
+    username: "A00172",
+    email: "ajay@domain.com",
+    avatar: "/favicon/apple-touch-icon.png",
   },
   teams: [
     {
