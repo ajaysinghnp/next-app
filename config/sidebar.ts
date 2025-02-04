@@ -5,8 +5,10 @@ import {
   Command,
   Frame,
   GalleryVerticalEnd,
+  LifeBuoy,
   Map,
   PieChart,
+  Send,
   Settings2,
   SquareTerminal,
 } from "lucide-react"
@@ -120,6 +122,18 @@ export const data = {
           url: "#",
         },
       ],
+    },
+  ],
+  navSecondary: [
+    {
+      title: "Support",
+      url: "#",
+      icon: LifeBuoy,
+    },
+    {
+      title: "Feedback",
+      url: "#",
+      icon: Send,
     },
   ],
   projects: [
