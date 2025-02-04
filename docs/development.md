@@ -28,11 +28,19 @@ for `ssh` cloning
 git clone git@github.com:ajaysinghnp/next-app.git
 ```
 
-## Step 5. Create a .env file
+## Step 5. Install the dependencies
+
+Install all the dependencies with this command
+
+```npm
+npm install
+```
+
+## Step 6. Create a .env file
 
 Project already comes with the required sample env file, but it is just loaded with sample content initially. Change them according to your needs.
 
-## Step 6. Then, run the development server
+## Step 7. Then, run the development server
 
 ```bash
 npm run dev
@@ -44,7 +52,7 @@ pnpm dev
 bun dev
 ```
 
-## Step 7. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result
+## Step 8. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
