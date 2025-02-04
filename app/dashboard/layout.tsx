@@ -1,4 +1,5 @@
 import { AppSidebar } from "@/components/blocks/app-sidebar"
+import { SearchForm } from "@/components/forms/search-form"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -13,6 +14,7 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
+import { ModeToggle } from "@/components/ui/theme-toggle"
 
 export default function DashboardLayout(
   { children }: { children: React.ReactNode }
@@ -40,7 +42,8 @@ export default function DashboardLayout(
             </Breadcrumb>
           </div>
           <div className="flex items-center gap-2 px-4">
-            <button className="btn btn-ghost">Edit</button>
+            <SearchForm className="w-full sm:ml-auto sm:w-auto" />
+            <ModeToggle />
           </div>
         </header>
         {children}
