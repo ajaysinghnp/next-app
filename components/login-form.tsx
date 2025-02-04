@@ -27,11 +27,11 @@ export function LoginForm({
           <form>
             <div className="flex flex-col gap-6">
               <div className="grid gap-2">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="username">Username</Label>
                 <Input
-                  id="email"
-                  type="email"
-                  placeholder="m@example.com"
+                  id="username"
+                  type="text"
+                  placeholder="A00172"
                   required
                 />
               </div>
@@ -50,14 +50,14 @@ export function LoginForm({
               <Button type="submit" className="w-full">
                 Login
               </Button>
-              <Button variant="outline" className="w-full">
-                Login with Google
+              <Button variant="outline" className="w-full" disabled>
+                Login with NRB [Comming Soon]
               </Button>
             </div>
-            <div className="mt-4 text-center text-sm">
-              Don&apos;t have an account?{""}
+            <div className="mt-4 text-center text-sm flex flex-1 justify-between">
+              Don&apos;t have an account?{" "}
               <a href="#" className="underline underline-offset-4">
-                Sign up
+                Request for Sign up
               </a>
             </div>
           </form>
