@@ -25,22 +25,25 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar"
 
-export function NavProjects({
-  projects,
-}: {
-  projects: {
+export interface Props {
+  title: string
+  reports: {
     name: string
     url: string
     icon: LucideIcon
   }[]
-}) {
+}
+
+export function NavReports({
+  title, reports,
+}: Props) {
   const { isMobile } = useSidebar()
 
   return (
     <SidebarGroup className="group-data-[collapsible=icon]:hidden">
-      <SidebarGroupLabel>Projects</SidebarGroupLabel>
+      <SidebarGroupLabel>{title}</SidebarGroupLabel>
       <SidebarMenu>
-        {projects.map((item) => (
+        {reports.map((item) => (
           <SidebarMenuItem key={item.name}>
             <SidebarMenuButton asChild>
               <a href={item.url}>
