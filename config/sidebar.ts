@@ -1,15 +1,15 @@
 import {
-  AudioWaveform,
   BookOpen,
   Bot,
-  Command,
+  Cog,
+  Cpu,
   Frame,
-  GalleryVerticalEnd,
   LifeBuoy,
   Map,
   PieChart,
   Send,
   Settings2,
+  ShoppingCart,
   SquareTerminal,
 } from "lucide-react"
 
@@ -22,18 +22,18 @@ export const data = {
   },
   teams: [
     {
-      name: "Acme Inc",
-      logo: GalleryVerticalEnd,
+      name: "BR Marketting",
+      logo: ShoppingCart,
       plan: "Enterprise",
     },
     {
-      name: "Acme Corp.",
-      logo: AudioWaveform,
+      name: "BR Solutions",
+      logo: Cpu,
       plan: "Startup",
     },
     {
-      name: "Evil Corp.",
-      logo: Command,
+      name: "BR Engineering",
+      logo: Cog,
       plan: "Free",
     },
   ],
