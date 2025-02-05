@@ -2,6 +2,19 @@
 
 This is a [Next.js](https://nextjs.org) Template Application with all the basic functionalities like authentication and authorization along with user management and dashbord for each user. This template uses `Nextjs app router` for the `fullstack` application with [prisma](https://www.prisma.io/) as an `ORM`. For the development `sqlite` database is configured for the easy development process, however we can change that to use full blown database server supported by the `prisma` just changing two lines as describe below. This is not any fully developed project but instead is a basic starter template using the underlying technologies explained.
 
+## TODO List
+
+Although we have came a long way. There is still room to improve.
+
+- [x] Basic Setup
+  - [x] Nextjs Initialization
+  - [x] Prisma Setup
+  - [ ] User and authentication Models
+  - [ ] Search using Providers
+- [ ] User Management
+- [ ] Login (Authentication System)
+- [ ] Role Based Access Management (RBAC) (Authorization)
+
 ## Getting Started
 
 To use this template for your application follow the steps in the [Docs](docs/getting-started.md)
