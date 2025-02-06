@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Providers } from "@/components/providers/all";
-import { app_config } from "@/config/app";
+
 import { version } from "@/package.json"
+import { app_config } from "@/config/app";
+import { business_config } from "@/config/business"
+
 import "./globals.css";
 
 const geistSans = Geist({
@@ -16,7 +19,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: `${app_config.app_name} v${version}`,
+  title: `${business_config} | ${app_config.app_name} v${version}`,
   description: app_config.app_description,
 };
 
