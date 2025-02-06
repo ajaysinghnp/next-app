@@ -1,4 +1,9 @@
+import { LoginButton } from "@/components/authentication/login-button";
+import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/ui/theme-toggle";
+import { app_config } from "@/config/app";
+import { business_config } from "@/config/business";
+import { LogIn } from "lucide-react";
 
 export default function Home() {
   return (
@@ -6,8 +11,27 @@ export default function Home() {
       <div className="absolute top-0 right-0 p-4">
         <ModeToggle />
       </div>
-      <div className="w-full max-w-sm text-center">
-        <h1>Home page</h1>
+      <div className="space-y-6 text-center text-slate-800 dark:text-white">
+        <h1 className="text-6xl font-semibold drop-shadow-md">
+          🛍️ {business_config.name}
+        </h1>
+        <h2 className="text-4xl font-semibold drop-shadow-md">
+          {app_config.app_name}{" "}
+          <span className="text-2xl font-normal drop-shadow-md">
+            {app_config.app_version}
+          </span>
+        </h2>
+        <p className="text-xl drop-shadow-md">
+          {app_config.app_description}
+        </p>
+        <div>
+          <LoginButton asChild>
+            <Button className="font-semibold" size="lg">
+              <LogIn className="h-4 w-4" />
+              Login
+            </Button>
+          </LoginButton>
+        </div>
       </div>
     </div>
   )
