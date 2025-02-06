@@ -2,7 +2,7 @@ import NextAuth from 'next-auth';
 
 import { auth } from '@/auth'
 import authConfig from '@/auth.config'
-import { adminPrefix, apiAuthPrefix, authRoutes, DEFAULT_LOGIN_REDIRECT, publicRoutes } from '@/config/routes';
+import { adminPrefix, apiAuthPrefix, authRoutes, DEFAULT_LOGIN_REDIRECT, loginRoute, publicRoutes } from '@/config/routes';
 
 const { auth: middleware } = NextAuth(authConfig)
 
@@ -11,8 +11,8 @@ export default auth((req) => {
   const isAuthenticated = !!req.auth;
   
   const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix)
-  const isAdminRoute = nextUrl.pathname.startsWith(adminPrefix)
-  const isDashboardRoute = nextUrl.pathname.startsWith(adminPrefix)
+  // const isAdminRoute = nextUrl.pathname.startsWith(adminPrefix)
+  // const isDashboardRoute = nextUrl.pathname.startsWith(dashboardPrefix)
   const isPublicRoute = publicRoutes.includes(nextUrl.pathname)
   const isAuthRoute = authRoutes.includes(nextUrl.pathname)
 
@@ -26,6 +26,11 @@ export default auth((req) => {
     }
     return void 0;
   }
+
+  if (!isAuthenticated && !isPublicRoute) {
+    return Response.redirect(new URL(loginRoute, nextUrl));
+  }
+  return void 0;
 })
 
 export const config = {

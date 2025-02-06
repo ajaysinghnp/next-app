@@ -7,6 +7,13 @@
 export const apiAuthPrefix = "/api/auth";
 
 /**
+ * Route for login
+ * @type {string} privateRoutes
+ */
+
+export const loginRoute = "/auth/login";
+
+/**
  * Routes for successfull authentication redirect
  * @type {string} privateRoutes
  */
@@ -45,6 +52,6 @@ export const publicRoutes = [
  * @type {string[]} privateRoutes
  */
 export const authRoutes = [
-  "/auth/login",
+  loginRoute,
   "/auth/register",
 ]
