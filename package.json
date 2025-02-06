@@ -6,7 +6,13 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier --write .",
+    "push": "npm exec prisma db push",
+    "seed": "npm exec prisma db seed",
+    "generate": "npm exec prisma generate",
+    "studio": "npm exec prisma studio",
+    "migrate": "npm exec prisma migrate dev"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.7.4",
