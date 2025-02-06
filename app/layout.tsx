@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Providers } from "@/components/providers/all";
 
-import { version } from "@/package.json"
 import { app_config } from "@/config/app";
 import { business_config } from "@/config/business"
 
@@ -20,7 +19,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: `${business_config.name} | ${app_config.app_name} v${version}`,
+  title: `${business_config.name} | ${app_config.app_name} ${app_config.app_version}`,
   description: app_config.app_description,
 };
 
