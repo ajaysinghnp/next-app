@@ -7,7 +7,7 @@ export default function Register() {
       <div className="absolute top-0 right-0 p-4">
         <ModeToggle />
       </div>
-      <div className="w-full max-w-sm">
+      <div className="w-full max-w-sm drop-shadow-md">
         <LoginForm />
       </div>
     </div>
