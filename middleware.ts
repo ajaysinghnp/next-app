@@ -1,38 +1,38 @@
-import { withAuth } from 'next-auth/middleware'
-import { NextResponse } from 'next/server'
+import NextAuth from 'next-auth';
 
-export { auth as middleware } from "@/auth";
+import { auth } from '@/auth'
+import authConfig from '@/auth.config'
+import { adminPrefix, apiAuthPrefix, authRoutes, DEFAULT_LOGIN_REDIRECT, publicRoutes } from '@/config/routes';
 
-export default withAuth(
-  function middleware(req) {
-    const token = req.nextauth.token
-    const isAuth = !!token
-    const isAuthPage = req.nextUrl.pathname.startsWith('/login')
-    const isAdminPage = req.nextUrl.pathname.startsWith('/admin')
-    
-    if (isAuthPage) {
-      if (isAuth) {
-        return NextResponse.redirect(new URL('/dashboard', req.url))
-      }
-      return null
-    }
+const { auth: middleware } = NextAuth(authConfig)
 
-    if (!isAuth) {
-      return NextResponse.redirect(new URL('/login', req.url))
-    }
+export default auth((req) => {
+  const { nextUrl } = req;
+  const isAuthenticated = !!req.auth;
+  
+  const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix)
+  const isAdminRoute = nextUrl.pathname.startsWith(adminPrefix)
+  const isDashboardRoute = nextUrl.pathname.startsWith(adminPrefix)
+  const isPublicRoute = publicRoutes.includes(nextUrl.pathname)
+  const isAuthRoute = authRoutes.includes(nextUrl.pathname)
 
-    if (isAdminPage && token.role !== 'ADMIN') {
-      return NextResponse.redirect(new URL('/dashboard', req.url))
-    }
-  },
-  {
-    callbacks: {
-      authorized: ({ token }) => !!token
-    },
+  if (isApiAuthRoute) {
+    return void 0;
   }
-)
+
+  if (isAuthRoute) {
+    if (isAuthenticated) {
+      return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
+    }
+    return void 0;
+  }
+})
 
 export const config = {
-  matcher: ['/admin/:path*', '/login']
-  // matcher: ['/admin/:path*', '/dashboard/:path*', '/login']
+  matcher: [
+    // Skip Next.js internals and all static files, unless found in search params
+    '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
+    // Always run for API routes
+    '/(api|trpc)(.*)',
+  ],
 }

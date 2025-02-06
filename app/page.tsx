@@ -1,4 +1,3 @@
-import { LoginForm } from "@/components/authentication/login-form";
 import { ModeToggle } from "@/components/ui/theme-toggle";
 
 export default function Home() {
@@ -7,8 +6,8 @@ export default function Home() {
       <div className="absolute top-0 right-0 p-4">
         <ModeToggle />
       </div>
-      <div className="w-full max-w-sm">
-        <LoginForm />
+      <div className="w-full max-w-sm text-center">
+        <h1>Home page</h1>
       </div>
     </div>
   )

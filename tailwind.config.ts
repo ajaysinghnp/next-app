@@ -9,6 +9,14 @@ export default {
   ],
   theme: {
   	extend: {
+			animation: {
+        "gradient-x": 'gradient-x 5s ease infinite',
+      },
+			borderRadius: {
+				lg: 'var(--radius)',
+				md: 'calc(var(--radius) - 2px)',
+				sm: 'calc(var(--radius) - 4px)'
+			},
   		colors: {
   			background: 'var(--background)',
   			foreground: 'var(--foreground)',
@@ -23,11 +31,12 @@ export default {
   				ring: 'hsl(var(--sidebar-ring))'
   			}
   		},
-  		borderRadius: {
-  			lg: 'var(--radius)',
-  			md: 'calc(var(--radius) - 2px)',
-  			sm: 'calc(var(--radius) - 4px)'
-  		}
+			keyframes: {
+        'gradient-x': {
+          '0%, 100%': { 'background-position': '0% 50%' },
+          '50%': { 'background-position': '100% 50%' },
+        }
+      }
   	}
   },
   plugins: [require("tailwindcss-animate")],
