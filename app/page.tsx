@@ -1,4 +1,5 @@
 import { LoginButton } from "@/components/authentication/login-button";
+import CopyRight from "@/components/blocks/copyright";
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/ui/theme-toggle";
 import { app_config } from "@/config/app";
@@ -7,7 +8,7 @@ import { LogIn } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
+    <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10 relative">
       <div className="absolute top-0 right-0 p-4">
         <ModeToggle />
       </div>
@@ -33,6 +34,7 @@ export default function Home() {
           </LoginButton>
         </div>
       </div>
+      <CopyRight />
     </div>
   )
 }
