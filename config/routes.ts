@@ -43,6 +43,7 @@ export const dashboardPrefix = "/dashboard";
 
 export const publicRoutes = [
   "/",
+  "/dashboard"
 ]
 
 /**
