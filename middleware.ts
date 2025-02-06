@@ -1,6 +1,8 @@
 import { withAuth } from 'next-auth/middleware'
 import { NextResponse } from 'next/server'
 
+export { auth as middleware } from "@/auth";
+
 export default withAuth(
   function middleware(req) {
     const token = req.nextauth.token
