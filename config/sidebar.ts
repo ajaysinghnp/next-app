@@ -11,8 +11,8 @@ import {
   Settings2,
   ShoppingCart,
   SquareTerminal,
-} from "lucide-react"
-import { title } from "process"
+} from "lucide-react";
+import { title } from "process";
 
 export const data = {
   user: {
@@ -160,4 +160,4 @@ export const data = {
       },
     ],
   },
-}
+};

@@ -1,34 +1,38 @@
-import { NextAuthOptions } from 'next-auth'
-import CredentialsProvider from 'next-auth/providers/credentials'
-import { PrismaAdapter } from '@auth/prisma-adapter'
-import { prisma } from './db'
-import bcrypt from 'bcryptjs'
+import { PrismaAdapter } from "@auth/prisma-adapter";
+import bcrypt from "bcryptjs";
+import { NextAuthOptions } from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
+
+import { prisma } from "./db";
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
   session: {
-    strategy: 'jwt'
+    strategy: "jwt",
   },
   providers: [
     CredentialsProvider({
-      name: 'credentials',
+      name: "credentials",
       credentials: {
         email: { label: "Email", type: "email" },
-        password: { label: "Password", type: "password" }
+        password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) {
-          throw new Error('Invalid credentials')
+          throw new Error("Invalid credentials");
         }
 
         const user = await prisma.user.findUnique({
           where: {
-            email: credentials.email
-          }
-        })
+            email: credentials.email,
+          },
+        });
 
-        if (!user || !await bcrypt.compare(credentials.password, user.password)) {
-          throw new Error('Invalid credentials')
+        if (
+          !user ||
+          !(await bcrypt.compare(credentials.password, user.password))
+        ) {
+          throw new Error("Invalid credentials");
         }
 
         return {
@@ -36,9 +40,9 @@ export const authOptions: NextAuthOptions = {
           email: user.email,
           name: user.name,
           role: user.role,
-        }
-      }
-    })
+        };
+      },
+    }),
   ],
   callbacks: {
     async jwt({ token, user }) {
@@ -46,9 +50,9 @@ export const authOptions: NextAuthOptions = {
         return {
           ...token,
           role: user.role,
-        }
+        };
       }
-      return token
+      return token;
     },
     async session({ session, token }) {
       return {
@@ -56,11 +60,11 @@ export const authOptions: NextAuthOptions = {
         user: {
           ...session.user,
           role: token.role,
-        }
-      }
-    }
+        },
+      };
+    },
   },
   pages: {
-    signIn: '/login',
-  }
-}
+    signIn: "/login",
+  },
+};

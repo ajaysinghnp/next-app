@@ -1,14 +1,14 @@
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { cn } from "@/lib/utils";
 
 export function LoginForm({
   className,
@@ -45,7 +45,12 @@ export function LoginForm({
                     Forgot your password?
                   </a>
                 </div>
-                <Input id="password" type="password" placeholder="Password" required />
+                <Input
+                  id="password"
+                  type="password"
+                  placeholder="Password"
+                  required
+                />
               </div>
               <Button type="submit" className="w-full">
                 Login
@@ -54,7 +59,7 @@ export function LoginForm({
                 Login with NRB [Comming Soon]
               </Button>
             </div>
-            <div className="mt-4 text-center text-sm flex flex-1 justify-between">
+            <div className="mt-4 flex flex-1 justify-between text-center text-sm">
               Don&apos;t have an account?{" "}
               <a href="#" className="underline underline-offset-4">
                 Request for Sign up
@@ -64,5 +69,5 @@ export function LoginForm({
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }

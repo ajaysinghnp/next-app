@@ -3,7 +3,7 @@
  * The prefix for API authentication routes
  * Routes that start with this prefix are used for API authentication purposes
  * @type {string} privateRoutes
-*/
+ */
 export const apiAuthPrefix = "/api/auth";
 
 /**
@@ -41,10 +41,7 @@ export const dashboardPrefix = "/dashboard";
  * @type {string[]} publicRoutes
  */
 
-export const publicRoutes = [
-  "/",
-  "/dashboard"
-]
+export const publicRoutes = ["/", "/dashboard"];
 
 /**
  * Routes should be accessible publicly for authentication to work
@@ -52,7 +49,4 @@ export const publicRoutes = [
  * These routes will redirect to the dashboard or predefined route if the user is already authenticated
  * @type {string[]} privateRoutes
  */
-export const authRoutes = [
-  loginRoute,
-  "/auth/register",
-]
+export const authRoutes = [loginRoute, "/auth/register"];

@@ -1,6 +1,6 @@
-import { AppSidebar } from "@/components/blocks/app-sidebar"
-import CopyRight from "@/components/blocks/copyright"
-import { SearchForm } from "@/components/forms/search-form"
+import { AppSidebar } from "@/components/blocks/app-sidebar";
+import CopyRight from "@/components/blocks/copyright";
+import { SearchForm } from "@/components/forms/search-form";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -8,23 +8,25 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
-import { Separator } from "@/components/ui/separator"
+} from "@/components/ui/breadcrumb";
+import { Separator } from "@/components/ui/separator";
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
-} from "@/components/ui/sidebar"
-import { ModeToggle } from "@/components/ui/theme-toggle"
+} from "@/components/ui/sidebar";
+import { ModeToggle } from "@/components/ui/theme-toggle";
 
-export default function DashboardLayout(
-  { children }: { children: React.ReactNode }
-) {
+export default function DashboardLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <SidebarProvider>
       <AppSidebar />
       <SidebarInset className="relative">
-        <header className="flex h-16 shrink-0 items-center justify-between gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12 border-b dark:border-zinc-700">
+        <header className="flex h-16 shrink-0 items-center justify-between gap-2 border-b transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12 dark:border-zinc-700">
           <div className="flex items-center gap-2 px-4">
             <SidebarTrigger className="-ml-1" />
             <Separator orientation="vertical" className="mr-2 h-4" />
@@ -51,5 +53,5 @@ export default function DashboardLayout(
         <CopyRight className="right-2" />
       </SidebarInset>
     </SidebarProvider>
-  )
+  );
 }

@@ -1,20 +1,21 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 
-import { NavMain } from "@/components/blocks/nav-main"
-import { NavReports } from "@/components/blocks/nav-reports"
-import { NavUser } from "@/components/blocks/nav-user"
-import { TeamSwitcher } from "@/components/blocks/team-switcher"
+import { NavMain } from "@/components/blocks/nav-main";
+import { NavReports } from "@/components/blocks/nav-reports";
+import { NavUser } from "@/components/blocks/nav-user";
+import { TeamSwitcher } from "@/components/blocks/team-switcher";
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
-} from "@/components/ui/sidebar"
-import { data } from "@/config/sidebar"
-import { NavSecondary } from "./nav-secondary"
+} from "@/components/ui/sidebar";
+import { data } from "@/config/sidebar";
+
+import { NavSecondary } from "./nav-secondary";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
@@ -32,5 +33,5 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
-  )
+  );
 }

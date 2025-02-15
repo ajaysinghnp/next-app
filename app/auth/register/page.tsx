@@ -5,5 +5,5 @@ export default function Register() {
     <main className="w-full max-w-sm drop-shadow-md">
       <LoginForm />
     </main>
-  )
+  );
 }

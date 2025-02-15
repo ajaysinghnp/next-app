@@ -1,7 +1,7 @@
 "use client";
 
-import React from "react";
 import { useRouter } from "next/navigation";
+import React from "react";
 
 import { loginRoute } from "@/config/routes";
 
@@ -11,7 +11,11 @@ export interface Props {
   asChild?: boolean;
 }
 
-export const LoginButton = ({ children, mode = "redirect", asChild }: Props) => {
+export const LoginButton = ({
+  children,
+  mode = "redirect",
+  asChild,
+}: Props) => {
   const router = useRouter();
   console.log(asChild);
   const goToLogin = () => {
@@ -20,17 +24,12 @@ export const LoginButton = ({ children, mode = "redirect", asChild }: Props) => 
       router.push(loginRoute);
     } else {
       // open modal
-
     }
   };
 
   // temporary warning for development
   if (mode === "modal") {
-    return (
-      <span>
-        TODO: Implement modal login
-      </span>
-    );
+    return <span>TODO: Implement modal login</span>;
   }
 
   return (

@@ -3,4 +3,4 @@ export const business_config = {
   address: "Kadaghari 09, Kathmandu, Nepal",
   VAT_PAN: "123456789",
   isVAT: false,
-}
+};
