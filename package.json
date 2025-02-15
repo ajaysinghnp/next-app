@@ -42,6 +42,7 @@
     "@eslint/js": "^9.20.0",
     "@mentormaya/helper": "^1.0.1",
     "@next/eslint-plugin-next": "^15.1.7",
+    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "@types/bcryptjs": "^2.4.6",
     "@types/node": "^20",
     "@types/react": "^19",
@@ -56,6 +57,7 @@
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^5.1.0",
     "postcss": "^8",
+    "prettier-plugin-tailwindcss": "^0.6.11",
     "prisma": "^6.3.1",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
