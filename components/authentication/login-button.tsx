@@ -13,6 +13,7 @@ export interface Props {
 
 export const LoginButton = ({ children, mode = "redirect", asChild }: Props) => {
   const router = useRouter();
+  console.log(asChild);
   const goToLogin = () => {
     if (mode === "redirect") {
       // redirect to login page
@@ -21,7 +22,7 @@ export const LoginButton = ({ children, mode = "redirect", asChild }: Props) => 
       // open modal
 
     }
-  }
+  };
 
   // temporary warning for development
   if (mode === "modal") {
@@ -29,12 +30,12 @@ export const LoginButton = ({ children, mode = "redirect", asChild }: Props) => 
       <span>
         TODO: Implement modal login
       </span>
-    )
+    );
   }
 
   return (
     <span className="cursor-pointer" onClick={goToLogin}>
       {children}
     </span>
-  )
-}
+  );
+};
