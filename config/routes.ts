@@ -41,7 +41,7 @@ export const dashboardPrefix = "/dashboard";
  * @type {string[]} publicRoutes
  */
 
-export const publicRoutes = ["/", "/dashboard"];
+export const publicRoutes = ["/"];
 
 /**
  * Routes should be accessible publicly for authentication to work

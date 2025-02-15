@@ -1,17 +1,14 @@
-import NextAuth from "next-auth";
-
 import { auth } from "@/auth";
-import authConfig from "@/auth.config";
 import {
   DEFAULT_LOGIN_REDIRECT,
-  adminPrefix,
   apiAuthPrefix,
   authRoutes,
+  dashboardPrefix,
   loginRoute,
   publicRoutes,
 } from "@/config/routes";
 
-const { auth: middleware } = NextAuth(authConfig);
+// const { auth: middleware } = NextAuth(authConfig);
 
 export default auth((req) => {
   const { nextUrl } = req;
@@ -19,7 +16,7 @@ export default auth((req) => {
 
   const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix);
   // const isAdminRoute = nextUrl.pathname.startsWith(adminPrefix)
-  // const isDashboardRoute = nextUrl.pathname.startsWith(dashboardPrefix)
+  const isDashboardRoute = nextUrl.pathname.startsWith(dashboardPrefix);
   const isPublicRoute = publicRoutes.includes(nextUrl.pathname);
   const isAuthRoute = authRoutes.includes(nextUrl.pathname);
 
@@ -34,9 +31,15 @@ export default auth((req) => {
     return void 0;
   }
 
+  // if (isAuthenticated && isDashboardRoute) { TODO: Uncomment this line after adding the login logic
+  if (isDashboardRoute) {
+    return void 0;
+  }
+
   if (!isAuthenticated && !isPublicRoute) {
     return Response.redirect(new URL(loginRoute, nextUrl));
   }
+
   return void 0;
 });
 
