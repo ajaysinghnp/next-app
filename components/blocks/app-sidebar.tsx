@@ -6,13 +6,7 @@ import { NavMain } from "@/components/blocks/nav-main";
 import { NavReports } from "@/components/blocks/nav-reports";
 import { NavUser } from "@/components/blocks/nav-user";
 import { TeamSwitcher } from "@/components/blocks/team-switcher";
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarFooter,
-  SidebarHeader,
-  SidebarRail,
-} from "@/components/ui/sidebar";
+import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarRail } from "@/components/ui/sidebar";
 import { data } from "@/config/sidebar";
 
 import { NavSecondary } from "./nav-secondary";

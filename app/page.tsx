@@ -14,14 +14,9 @@ export default function Home() {
         <ModeToggle />
       </div>
       <div className="space-y-6 text-center text-slate-800 dark:text-white">
-        <h1 className="text-6xl font-semibold drop-shadow-md">
-          🛍️ {business_config.name}
-        </h1>
+        <h1 className="text-6xl font-semibold drop-shadow-md">🛍️ {business_config.name}</h1>
         <h2 className="text-4xl font-semibold drop-shadow-md">
-          {app_config.app_name}{" "}
-          <span className="text-2xl font-normal drop-shadow-md">
-            {app_config.app_version}
-          </span>
+          {app_config.app_name} <span className="text-2xl font-normal drop-shadow-md">{app_config.app_version}</span>
         </h2>
         <p className="text-xl drop-shadow-md">{app_config.app_description}</p>
         <div>

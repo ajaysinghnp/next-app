@@ -11,9 +11,7 @@ export const env = createEnv({
   },
   // Called when server variables are accessed on the client.
   onInvalidAccess: (variable: string) => {
-    throw new Error(
-      "❌ Attempted to access a server-side environment variable on the client"
-    );
+    throw new Error("❌ Attempted to access a server-side environment variable on the client");
   },
   emptyStringAsUndefined: true,
 });

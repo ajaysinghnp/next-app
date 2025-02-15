@@ -11,11 +11,7 @@ export interface Props {
   asChild?: boolean;
 }
 
-export const LoginButton = ({
-  children,
-  mode = "redirect",
-  asChild,
-}: Props) => {
+export const LoginButton = ({ children, mode = "redirect", asChild }: Props) => {
   const router = useRouter();
   console.log(asChild);
   const goToLogin = () => {
