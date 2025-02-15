@@ -1,5 +1,8 @@
 {
+  "files.eol": "\n",
+  "files.autoSave": "onFocusChange", // optional but recommended
   "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file", // required to format on save
   "editor.codeActionsOnSave": {
     "source.fixAll": "always",
     "source.organizeImports": "always"

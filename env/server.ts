@@ -14,11 +14,9 @@ export const env = createEnv({
     DATABASE_URL: z.string().url(),
   },
   onValidationError: (issues: readonly StandardSchemaV1.Issue[]) => {
-    console.error(
-      "❌ Invalid environment variables:",
-      issues
-    );
-    throw new Error("Invalid environment variables");
+    console.error("❌ Invalid environment variables:", issues);
+    // throw new Error("Invalid environment variables");
+    process.exit(1);
   },
   emptyStringAsUndefined: true,
   // eslint-disable-next-line n/no-process-env
