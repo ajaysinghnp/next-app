@@ -1,10 +1,6 @@
 import { StandardSchemaV1 } from "@t3-oss/env-core";
 import { createEnv } from "@t3-oss/env-nextjs";
-import { config } from "dotenv";
-import { expand } from "dotenv-expand";
 import { z } from "zod";
-
-expand(config());
 
 export const env = createEnv({
   server: {
@@ -15,8 +11,7 @@ export const env = createEnv({
   },
   onValidationError: (issues: readonly StandardSchemaV1.Issue[]) => {
     console.error("❌ Invalid environment variables:", issues);
-    // throw new Error("Invalid environment variables");
-    process.exit(1);
+    throw new Error("Invalid environment variables");
   },
   emptyStringAsUndefined: true,
   // eslint-disable-next-line n/no-process-env
