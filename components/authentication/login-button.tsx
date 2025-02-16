@@ -13,7 +13,7 @@ export interface Props {
 
 export const LoginButton = ({ children, mode = "redirect", asChild }: Props) => {
   const router = useRouter();
-  console.log(asChild);
+  console.log("LoginButton", { mode, asChild });
   const goToLogin = () => {
     if (mode === "redirect") {
       // redirect to login page

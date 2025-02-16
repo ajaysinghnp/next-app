@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Loader2 } from "lucide-react";
 
-export default function Loading() {
+export const Loading = () => {
   return (
     <div className="min-h-screen w-full flex items-center justify-center bg-background">
       <Card className="w-full max-w-md mx-4">
@@ -12,4 +12,4 @@ export default function Loading() {
       </Card>
     </div>
   );
-}
+};
