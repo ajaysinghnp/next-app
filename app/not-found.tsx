@@ -1,8 +1,9 @@
+import { TriangleAlert } from "lucide-react";
+
 import CopyRight from "@/components/blocks/copyright";
 import { ModeToggle } from "@/components/ui/theme-toggle";
 import { app_config } from "@/config/app";
 import { business_config } from "@/config/business";
-import { TriangleAlert } from "lucide-react";
 
 export default function NotFoundPage() {
   return (
@@ -26,5 +27,4 @@ export default function NotFoundPage() {
       <CopyRight />
     </div>
   );
-};
-
+}
