@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { app_config } from "@/config/app";
+import Image from "next/image";
 
 export interface Props {
   title: string;
@@ -23,7 +25,18 @@ export const AuthCard = ({
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-2xl">{title}</CardTitle>
+        <CardTitle className="text-2xl">
+          <div className="flex flex-col items-center gap-2">
+            <Image
+              src={app_config.app_logo}
+              alt={"Logo"}
+              width={50}
+              height={50}
+              className=""
+            />
+            <h1 className="w-full text-left">{title}</h1>
+          </div>
+        </CardTitle>
         <CardDescription>{description}</CardDescription>
       </CardHeader>
       <CardContent>
