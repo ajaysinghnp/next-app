@@ -1,6 +1,6 @@
 import React from "react";
 
-import CopyRight from "@/components/blocks/copyright";
+import { CopyRight } from "@/components/blocks/copyright";
 import { ModeToggle } from "@/components/ui/theme-toggle";
 
 const AuthLayout = ({ children }: { children: React.ReactNode }) => {

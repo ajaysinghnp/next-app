@@ -1,5 +1,5 @@
 import { AppSidebar } from "@/components/blocks/app-sidebar";
-import CopyRight from "@/components/blocks/copyright";
+import { CopyRight } from "@/components/blocks/copyright";
 import { SearchForm } from "@/components/forms/search-form";
 import {
   Breadcrumb,
