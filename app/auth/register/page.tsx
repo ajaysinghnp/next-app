@@ -1,9 +1,9 @@
-import { LoginForm } from "@/components/authentication/login-form";
+import { RegisterForm } from "@/components/authentication/register-form";
 
 export default function Register() {
   return (
     <main className="w-full max-w-sm drop-shadow-md">
-      <LoginForm />
+      <RegisterForm />
     </main>
   );
 }
