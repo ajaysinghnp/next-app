@@ -1,7 +1,7 @@
 import { LogIn } from "lucide-react";
 
 import { LoginButton } from "@/components/authentication/login-button";
-import CopyRight from "@/components/blocks/copyright";
+import { CopyRight } from "@/components/blocks/copyright";
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/ui/theme-toggle";
 import { app_config } from "@/config/app";
