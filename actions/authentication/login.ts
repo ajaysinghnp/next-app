@@ -1,9 +1,10 @@
 "use server";
 
+import { AuthError } from "next-auth";
 import { z } from "zod";
 
-import { comparePassword } from "@/lib/security";
-import { getUserByUsername } from "@/lib/user";
+import { signIn } from "@/auth";
+import { DEFAULT_LOGIN_REDIRECT } from "@/config/routes";
 import { LoginSchema } from "@/schemas/auth";
 
 export const login = async (credentials: z.infer<typeof LoginSchema>) => {
@@ -15,21 +16,21 @@ export const login = async (credentials: z.infer<typeof LoginSchema>) => {
 
   const { username, password } = validatedCredentials.data;
 
-  const existingUser = await getUserByUsername(username);
-
-  if (!existingUser) {
-    return { error: "❌ Invalid Credentials!" };
+  try {
+    await signIn("credentials", {
+      username,
+      password,
+      redirectTo: DEFAULT_LOGIN_REDIRECT,
+    });
+  } catch (error) {
+    if (error instanceof AuthError) {
+      switch (error.type) {
+        case "CredentialsSignin":
+          return { error: "❌ Invalid Credentials!" };
+        default:
+          return { error: "❌ Email create error!" };
+      }
+    }
+    throw error;
   }
-
-  if (!existingUser.password) {
-    return { error: "❌ Invalid Credentials!" };
-  }
-
-  const validPassword = await comparePassword(password, existingUser.password);
-
-  if (!validPassword) {
-    return { error: "❌ Invalid Credentials!" };
-  }
-
-  return { success: "Logged in!" };
 };

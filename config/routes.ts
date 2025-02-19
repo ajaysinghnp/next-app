@@ -14,13 +14,6 @@ export const apiAuthPrefix = "/api/auth";
 export const loginRoute = "/auth/login";
 
 /**
- * Routes for successfull authentication redirect
- * @type {string} privateRoutes
- */
-
-export const DEFAULT_LOGIN_REDIRECT = "/dashboard";
-
-/**
  * The prefix for admin routes
  * @type {string} privateRoutes
  */
@@ -33,6 +26,13 @@ export const adminPrefix = "/admin";
  */
 
 export const dashboardPrefix = "/dashboard";
+
+/**
+ * Routes for successfull authentication redirect
+ * @type {string} privateRoutes
+ */
+
+export const DEFAULT_LOGIN_REDIRECT = dashboardPrefix;
 
 /**
  * Routes that are public

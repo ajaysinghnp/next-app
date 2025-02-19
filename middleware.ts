@@ -1,4 +1,6 @@
-import { auth } from "@/auth";
+import NextAuth from "next-auth";
+
+import authConfig from "@/auth.config";
 import {
   DEFAULT_LOGIN_REDIRECT,
   apiAuthPrefix,
@@ -8,9 +10,9 @@ import {
   publicRoutes,
 } from "@/config/routes";
 
-// const { auth: middleware } = NextAuth(authConfig);
+const { auth } = NextAuth(authConfig);
 
-export default auth((req) => {
+export default auth(async (req) => {
   const { nextUrl } = req;
   const isAuthenticated = !!req.auth;
 
@@ -31,8 +33,7 @@ export default auth((req) => {
     return void 0;
   }
 
-  // if (isAuthenticated && isDashboardRoute) { TODO: Uncomment this line after adding the login logic
-  if (isDashboardRoute) {
+  if (isAuthenticated && isDashboardRoute) {
     return void 0;
   }
 

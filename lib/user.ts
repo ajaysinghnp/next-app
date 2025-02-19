@@ -5,21 +5,36 @@ import { db } from "@/lib/db";
 import { RegisterSchema } from "@/schemas/auth";
 
 export const getUserByEmail = async (email: string) => {
-  return await db.user.findUnique({
-    where: { email },
-  });
+  try {
+    return await db.user.findUnique({
+      where: { email },
+    });
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
 };
 
 export const getUserByUsername = async (username: string) => {
-  return await db.user.findUnique({
-    where: { username },
-  });
+  try {
+    return await db.user.findUnique({
+      where: { username },
+    });
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
 };
 
 export const getUserById = async (id: string) => {
-  return await db.user.findUnique({
-    where: { id },
-  });
+  try {
+    return await db.user.findUnique({
+      where: { id },
+    });
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
 };
 
 export const registerUser = async (data: z.infer<typeof RegisterSchema>) => {
