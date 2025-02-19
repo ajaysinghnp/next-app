@@ -7,6 +7,7 @@ export const env = createEnv({
     NODE_ENV: z.enum(["development", "production"]),
     AUTH_URL: z.string().url(),
     AUTH_SECRET: z.string(),
+    SALT_ROUNDS: z.coerce.number(),
     DATABASE_URL: z.string().url(),
   },
   onValidationError: (issues: readonly StandardSchemaV1.Issue[]) => {
