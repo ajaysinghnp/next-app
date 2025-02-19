@@ -3,7 +3,7 @@
 import { AuthError } from "next-auth";
 import { z } from "zod";
 
-import { signIn } from "@/auth";
+import { signIn, signOut } from "@/auth";
 import { DEFAULT_LOGIN_REDIRECT } from "@/config/routes";
 import { LoginSchema } from "@/schemas/auth";
 
@@ -33,4 +33,8 @@ export const login = async (credentials: z.infer<typeof LoginSchema>) => {
     }
     throw error;
   }
+};
+
+export const logOut = async () => {
+  await signOut({ redirectTo: "/login" });
 };

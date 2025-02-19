@@ -2,6 +2,7 @@
 
 import { BadgeCheck, Bell, ChevronsUpDown, CreditCard, LogOut, Sparkles } from "lucide-react";
 
+import { logOut } from "@/actions/authentication/login";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
@@ -89,7 +90,7 @@ export function NavUser({ user }: Props) {
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem className="cursor-pointer">
+            <DropdownMenuItem className="cursor-pointer" onClick={async () => await logOut()}>
               <LogOut />
               Log out
             </DropdownMenuItem>
