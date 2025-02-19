@@ -12,9 +12,10 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { RegisterSchema } from "@/schemas/auth";
-import { CircleX, FilePenLine } from "lucide-react";
+import { FilePenLine } from "lucide-react";
 import { useState, useTransition } from "react";
 import { FormButton } from "../forms/button";
+import { ClearButton } from "../forms/clear-button";
 
 export const RegisterForm = ({ className, ...props }: React.ComponentPropsWithoutRef<"div">) => {
   const [success, setSuccess] = useState<string | undefined>(undefined);
@@ -64,7 +65,8 @@ export const RegisterForm = ({ className, ...props }: React.ComponentPropsWithou
       >
         <Form {...form}>
           <form onSubmit={form.handleSubmit(submitRegister)} onReset={resetForm} className="space-y-6">
-            <div className="space-y-4">
+            <div className="space-y-4 relative">
+              <ClearButton dirty={form.formState.isDirty} />
               <FormField
                 control={form.control}
                 name="name"
@@ -120,10 +122,7 @@ export const RegisterForm = ({ className, ...props }: React.ComponentPropsWithou
             </div>
             <FormSuccess message={success} />
             <FormError message={error} />
-            <div className="flex justify-between gap-4 items-center">
-              <FormButton type="reset" pending={isPending} text="Clear" Icon={CircleX} />
-              <FormButton type="submit" pending={isPending} text="Register" Icon={FilePenLine} />
-            </div>
+            <FormButton type="submit" pending={isPending} text="Register" Icon={FilePenLine} />
           </form>
         </Form>
       </AuthCard>

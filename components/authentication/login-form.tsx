@@ -13,8 +13,9 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { LoginSchema } from "@/schemas/auth";
-import { CircleX, FilePenLine } from "lucide-react";
+import { FilePenLine } from "lucide-react";
 import { useState, useTransition } from "react";
+import { ClearButton } from "../forms/clear-button";
 
 export const LoginForm = ({ className, ...props }: React.ComponentPropsWithoutRef<"div">) => {
   const [success, setSuccess] = useState<string | undefined>(undefined);
@@ -62,7 +63,8 @@ export const LoginForm = ({ className, ...props }: React.ComponentPropsWithoutRe
       >
         <Form {...form}>
           <form onSubmit={form.handleSubmit(submitLogin)} onReset={resetForm} className="space-y-6">
-            <div className="space-y-4">
+            <div className="space-y-4 relative">
+              <ClearButton dirty={form.formState.isDirty} />
               <FormField
                 control={form.control}
                 name="username"
@@ -83,7 +85,7 @@ export const LoginForm = ({ className, ...props }: React.ComponentPropsWithoutRe
                   <FormItem>
                     <div className="flex items-center">
                       <FormLabel>Password</FormLabel>
-                      <a href="#" className="ml-auto inline-block text-sm underline-offset-4 hover:underline">
+                      <a href="#" className="ml-auto inline-block text-sm underline-offset-4 hover:underline" tabIndex={1}>
                         Forgot your password?
                       </a>
                     </div>
@@ -97,10 +99,7 @@ export const LoginForm = ({ className, ...props }: React.ComponentPropsWithoutRe
             </div>
             <FormSuccess message={success} />
             <FormError message={error} />
-            <div className="flex justify-between gap-4 items-center">
-              <FormButton type="reset" pending={isPending} text="Clear" Icon={CircleX} />
-              <FormButton type="submit" pending={isPending} text="Login" Icon={FilePenLine} />
-            </div>
+            <FormButton type="submit" pending={isPending} text="Login" Icon={FilePenLine} />
           </form>
         </Form>
       </AuthCard>
