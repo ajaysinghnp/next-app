@@ -40,7 +40,7 @@ export const AuthCard = ({
       <CardFooter className="flex flex-col gap-4">
         {social && (
           <Button variant="outline" className="w-full" disabled>
-            Login with NRB [Comming Soon]
+            Login with OAuth2 [Comming Soon]
           </Button>
         )}
         {footer_text && (
