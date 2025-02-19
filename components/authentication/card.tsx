@@ -1,7 +1,8 @@
+import Image from "next/image";
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { app_config } from "@/config/app";
-import Image from "next/image";
 
 export interface Props {
   title: string;
@@ -11,6 +12,7 @@ export interface Props {
   footer_text?: string;
   footer_link?: string;
   footer_href?: string;
+  className?: string;
 }
 
 export const AuthCard = ({
@@ -21,27 +23,20 @@ export const AuthCard = ({
   footer_text,
   footer_link,
   footer_href,
+  className,
 }: Props) => {
   return (
-    <Card>
+    <Card className={className}>
       <CardHeader>
         <CardTitle className="text-2xl">
           <div className="flex flex-col items-center gap-2">
-            <Image
-              src={app_config.app_logo}
-              alt={"Logo"}
-              width={50}
-              height={50}
-              className=""
-            />
+            <Image src={app_config.app_logo} alt={"Logo"} width={50} height={50} />
             <h1 className="w-full text-left">{title}</h1>
           </div>
         </CardTitle>
         <CardDescription>{description}</CardDescription>
       </CardHeader>
-      <CardContent>
-        {children}
-      </CardContent>
+      <CardContent>{children}</CardContent>
       <CardFooter className="flex flex-col gap-4">
         {social && (
           <Button variant="outline" className="w-full" disabled>
