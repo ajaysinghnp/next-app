@@ -4,14 +4,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-import { login } from "@/actions/login";
+import { register } from "@/actions/authentication/register";
 import { AuthCard } from "@/components/authentication/card";
 import { FormError } from "@/components/forms/form-error";
 import { FormSuccess } from "@/components/forms/form-success";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
-import { LoginSchema, RegisterSchema } from "@/schemas/auth";
+import { RegisterSchema } from "@/schemas/auth";
 import { CircleX, FilePenLine } from "lucide-react";
 import { useState, useTransition } from "react";
 import { FormButton } from "../forms/button";
@@ -31,11 +31,11 @@ export const RegisterForm = ({ className, ...props }: React.ComponentPropsWithou
       password: "",
     },
   });
-  const submitLogin = (credentials: z.infer<typeof LoginSchema>) => {
+  const submitRegister = (values: z.infer<typeof RegisterSchema>) => {
     startTransition(async () => {
       setSuccess(undefined);
       setError(undefined);
-      const res = await login(credentials);
+      const res = await register(values);
 
       if ("error" in res) {
         setError(res.error);
@@ -63,7 +63,7 @@ export const RegisterForm = ({ className, ...props }: React.ComponentPropsWithou
         social
       >
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(submitLogin)} onReset={resetForm} className="space-y-6">
+          <form onSubmit={form.handleSubmit(submitRegister)} onReset={resetForm} className="space-y-6">
             <div className="space-y-4">
               <FormField
                 control={form.control}

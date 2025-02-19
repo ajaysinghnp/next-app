@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-import { login } from "@/actions/login";
+import { login } from "@/actions/authentication/login";
 import { AuthCard } from "@/components/authentication/card";
 import { FormButton } from "@/components/forms/button";
 import { FormError } from "@/components/forms/form-error";
