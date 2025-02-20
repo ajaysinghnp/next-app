@@ -12,7 +12,7 @@ Although we have came a long way. There is still room to improve.
   - [x] User and authentication Models
   - [ ] Search using Providers
 - [ ] User Management
-- [ ] Login (Authentication System)
+- [x] Login (Authentication System)
 - [ ] Role Based Access Management (RBAC) (Authorization)
 
 ## Getting Started
