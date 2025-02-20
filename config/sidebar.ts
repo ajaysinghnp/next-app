@@ -12,15 +12,8 @@ import {
   ShoppingCart,
   SquareTerminal,
 } from "lucide-react";
-import { title } from "process";
 
 export const data = {
-  user: {
-    name: "Ajay Singh",
-    username: "ajay",
-    email: "ajay@domain.com",
-    avatar: "/favicon/apple-touch-icon.png",
-  },
   teams: [
     {
       name: "BR Marketting",
