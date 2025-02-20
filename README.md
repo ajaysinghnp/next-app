@@ -9,7 +9,7 @@ Although we have came a long way. There is still room to improve.
 - [x] Basic Setup
   - [x] Nextjs Initialization
   - [x] Prisma Setup
-  - [ ] User and authentication Models
+  - [x] User and authentication Models
   - [ ] Search using Providers
 - [ ] User Management
 - [ ] Login (Authentication System)
