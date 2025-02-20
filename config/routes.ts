@@ -49,4 +49,4 @@ export const publicRoutes = ["/"];
  * These routes will redirect to the dashboard or predefined route if the user is already authenticated
  * @type {string[]} privateRoutes
  */
-export const authRoutes = [loginRoute, "/auth/register"];
+export const authRoutes = [loginRoute, "/auth/register", "/auth/error"];

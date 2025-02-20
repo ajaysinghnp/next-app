@@ -1,25 +1,31 @@
 "use client";
 
+import { useSearchParams } from "next/navigation";
+import { useState, useTransition } from "react";
+
 import { zodResolver } from "@hookform/resolvers/zod";
+import { FilePenLine } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 import { login } from "@/actions/authentication/login";
 import { AuthCard } from "@/components/authentication/card";
 import { FormButton } from "@/components/forms/button";
+import { ClearButton } from "@/components/forms/clear-button";
 import { FormError } from "@/components/forms/form-error";
 import { FormSuccess } from "@/components/forms/form-success";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { parseURLError } from "@/lib/authentication";
 import { cn } from "@/lib/utils";
 import { LoginSchema } from "@/schemas/auth";
-import { FilePenLine } from "lucide-react";
-import { useState, useTransition } from "react";
-import { ClearButton } from "../forms/clear-button";
 
 export const LoginForm = ({ className, ...props }: React.ComponentPropsWithoutRef<"div">) => {
   const [success, setSuccess] = useState<string | undefined>(undefined);
   const [error, setError] = useState<string | undefined>(undefined);
+
+  const searchParams = useSearchParams();
+  const urlError = parseURLError(searchParams.get("error"));
 
   const [isPending, startTransition] = useTransition();
 
@@ -32,9 +38,14 @@ export const LoginForm = ({ className, ...props }: React.ComponentPropsWithoutRe
   });
   const submitLogin = (credentials: z.infer<typeof LoginSchema>) => {
     startTransition(async () => {
-      setSuccess(undefined);
       setError(undefined);
+      setSuccess(undefined);
       const res = await login(credentials);
+
+      if (!res) {
+        setError("An error occurred while trying to login. Please try again later.");
+        return;
+      }
 
       if ("error" in res) {
         setError(res.error);
@@ -85,7 +96,11 @@ export const LoginForm = ({ className, ...props }: React.ComponentPropsWithoutRe
                   <FormItem>
                     <div className="flex items-center">
                       <FormLabel>Password</FormLabel>
-                      <a href="#" className="ml-auto inline-block text-sm underline-offset-4 hover:underline" tabIndex={1}>
+                      <a
+                        href="#"
+                        className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
+                        tabIndex={1}
+                      >
                         Forgot your password?
                       </a>
                     </div>
@@ -97,12 +112,12 @@ export const LoginForm = ({ className, ...props }: React.ComponentPropsWithoutRe
                 )}
               />
             </div>
+            <FormError message={error || urlError} />
             <FormSuccess message={success} />
-            <FormError message={error} />
             <FormButton type="submit" pending={isPending} text="Login" Icon={FilePenLine} />
           </form>
         </Form>
       </AuthCard>
-    </div >
+    </div>
   );
 };

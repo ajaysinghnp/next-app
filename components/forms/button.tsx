@@ -1,8 +1,9 @@
 "use client";
 
+import { Loader2, LucideIcon } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Loader2, LucideIcon } from "lucide-react";
 
 export interface Props {
   pending: boolean;
@@ -12,14 +13,7 @@ export interface Props {
   Icon?: LucideIcon;
 }
 
-export const FormButton = ({
-  pending,
-  type = "button",
-  text = "Button",
-  className,
-  Icon,
-}: Props) => {
-
+export const FormButton = ({ pending, type = "button", text = "Button", className, Icon }: Props) => {
   if (pending) {
     return (
       <Button type={type} className={cn("w-full", className)} disabled>

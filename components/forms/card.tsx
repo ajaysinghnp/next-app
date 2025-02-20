@@ -6,20 +6,14 @@ export interface Props {
   children: React.ReactNode;
 }
 
-export const FormCard = ({
-  title,
-  description,
-  children
-}: Props) => {
+export const FormCard = ({ title, description, children }: Props) => {
   return (
     <Card>
       <CardHeader>
         <CardTitle className="text-2xl">{title}</CardTitle>
         <CardDescription>{description}</CardDescription>
       </CardHeader>
-      <CardContent>
-        {children}
-      </CardContent>
+      <CardContent>{children}</CardContent>
     </Card>
   );
 };

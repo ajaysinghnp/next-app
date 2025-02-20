@@ -3,6 +3,7 @@
 import { z } from "zod";
 
 import { hashPassword } from "@/lib/security";
+import { genrateVerificationToken } from "@/lib/tokens";
 import { getUserByEmail, getUserByUsername, registerUser } from "@/lib/user";
 import { RegisterSchema } from "@/schemas/auth";
 
@@ -31,5 +32,9 @@ export const register = async (values: z.infer<typeof RegisterSchema>) => {
 
   await registerUser({ name, username, email, password: hashedPassword });
 
-  return { success: "Congratulations🎉🎊 User Registered Successfully!" };
+  const verificationToken = await genrateVerificationToken(email);
+
+  console.log(verificationToken);
+
+  return { success: "Congratulations🎉🎊 User Registered and Confirmation email sent!" };
 };

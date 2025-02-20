@@ -1,6 +1,9 @@
 "use client";
 
+import { useState, useTransition } from "react";
+
 import { zodResolver } from "@hookform/resolvers/zod";
+import { FilePenLine } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -12,8 +15,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { RegisterSchema } from "@/schemas/auth";
-import { FilePenLine } from "lucide-react";
-import { useState, useTransition } from "react";
+
 import { FormButton } from "../forms/button";
 import { ClearButton } from "../forms/clear-button";
 
@@ -126,6 +128,6 @@ export const RegisterForm = ({ className, ...props }: React.ComponentPropsWithou
           </form>
         </Form>
       </AuthCard>
-    </div >
+    </div>
   );
 };

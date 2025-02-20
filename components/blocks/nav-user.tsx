@@ -1,6 +1,7 @@
 "use client";
 
 import { BadgeCheck, Bell, ChevronsUpDown, CreditCard, LogOut, Sparkles } from "lucide-react";
+import { useSession } from "next-auth/react";
 
 import { logOut } from "@/actions/authentication/login";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -15,7 +16,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from "@/components/ui/sidebar";
 import { initials } from "@/lib/strings";
-import { useSession } from "next-auth/react";
 
 export const NavUser = () => {
   const { isMobile } = useSidebar();
@@ -59,7 +59,9 @@ export const NavUser = () => {
                   <AvatarFallback className="rounded-lg">{initials(user?.name as string)}</AvatarFallback>
                 </Avatar>
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-semibold">{user?.name}({user?.role})</span>
+                  <span className="truncate font-semibold">
+                    {user?.name}({user?.role})
+                  </span>
                   <span className="truncate text-xs">{user?.email}</span>
                 </div>
               </div>

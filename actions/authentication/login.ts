@@ -5,6 +5,8 @@ import { z } from "zod";
 
 import { signIn, signOut } from "@/auth";
 import { DEFAULT_LOGIN_REDIRECT } from "@/config/routes";
+import { genrateVerificationToken } from "@/lib/tokens";
+import { getUserByUsername } from "@/lib/user";
 import { LoginSchema } from "@/schemas/auth";
 
 export const login = async (credentials: z.infer<typeof LoginSchema>) => {
@@ -15,6 +17,20 @@ export const login = async (credentials: z.infer<typeof LoginSchema>) => {
   }
 
   const { username, password } = validatedCredentials.data;
+
+  const user = await getUserByUsername(username);
+
+  if (!user || !user.email || !user.password) {
+    return { error: "❌ User doesn't exists in this context!" };
+  }
+
+  if (!user.emailVerified) {
+    const verificationToken = await genrateVerificationToken(user.email);
+
+    console.log(verificationToken);
+
+    return { success: "📧 Confirmation email sent again!" };
+  }
 
   try {
     await signIn("credentials", {
