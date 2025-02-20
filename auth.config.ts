@@ -24,7 +24,7 @@ export default {
   ],
 } satisfies NextAuthConfig;
 
-async function getUserByUsername(username: string) {
+export const getUserByUsername = async (username: string) => {
   try {
     return await db.user.findUnique({
       where: { username },
@@ -33,8 +33,8 @@ async function getUserByUsername(username: string) {
     console.log(error);
     return null;
   }
-}
+};
 
-async function comparePassword(password: string, hash: string) {
+export const comparePassword = async (password: string, hash: string) => {
   return await bcrypt.compare(password, hash);
-}
+};

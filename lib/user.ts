@@ -15,16 +15,7 @@ export const getUserByEmail = async (email: string) => {
   }
 };
 
-export const getUserByUsername = async (username: string) => {
-  try {
-    return await db.user.findUnique({
-      where: { username },
-    });
-  } catch (error) {
-    console.log(error);
-    return null;
-  }
-};
+export { getUserByUsername } from "@/auth.config";
 
 export const getUserById = async (id: string) => {
   try {
