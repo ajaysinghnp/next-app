@@ -5,6 +5,7 @@ import { z } from "zod";
 
 import { signIn, signOut } from "@/auth";
 import { DEFAULT_LOGIN_REDIRECT } from "@/config/routes";
+import { sendVerificationEmail } from "@/lib/mail";
 import { genrateVerificationToken } from "@/lib/tokens";
 import { getUserByUsername } from "@/lib/user";
 import { LoginSchema } from "@/schemas/auth";
@@ -13,7 +14,7 @@ export const login = async (credentials: z.infer<typeof LoginSchema>) => {
   const validatedCredentials = LoginSchema.safeParse(credentials);
 
   if (!validatedCredentials.success) {
-    return { error: "❌ Invalid credentials!" };
+    return { error: "⨯ Invalid credentials!" };
   }
 
   const { username, password } = validatedCredentials.data;
@@ -21,16 +22,22 @@ export const login = async (credentials: z.infer<typeof LoginSchema>) => {
   const user = await getUserByUsername(username);
 
   if (!user || !user.email || !user.password) {
-    return { error: "❌ User doesn't exists in this context!" };
+    return { error: "⨯ User doesn't exists in this context!" };
   }
 
   if (!user.emailVerified) {
     const verificationToken = await genrateVerificationToken(user.email);
 
-    console.log(verificationToken);
+    if (!verificationToken) return { error: "Failed to Generate Verification Token!" };
+
+    const sent = await sendVerificationEmail(verificationToken.email, verificationToken.token);
+
+    if (!sent) return { error: "Failed to Send Confirmation Email!" };
 
     return { success: "📧 Confirmation email sent again!" };
   }
+
+  //TODO add the logic for 2FA
 
   try {
     await signIn("credentials", {
@@ -42,9 +49,9 @@ export const login = async (credentials: z.infer<typeof LoginSchema>) => {
     if (error instanceof AuthError) {
       switch (error.type) {
         case "CredentialsSignin":
-          return { error: "❌ Invalid Credentials!" };
+          return { error: "⨯ Invalid Credentials!" };
         default:
-          return { error: "❌ Email create error!" };
+          return { error: "⨯ Email create error!" };
       }
     }
     throw error;

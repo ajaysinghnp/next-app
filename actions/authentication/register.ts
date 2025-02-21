@@ -2,6 +2,7 @@
 
 import { z } from "zod";
 
+import { sendVerificationEmail } from "@/lib/mail";
 import { hashPassword } from "@/lib/security";
 import { genrateVerificationToken } from "@/lib/tokens";
 import { getUserByEmail, getUserByUsername, registerUser } from "@/lib/user";
@@ -34,7 +35,11 @@ export const register = async (values: z.infer<typeof RegisterSchema>) => {
 
   const verificationToken = await genrateVerificationToken(email);
 
-  console.log(verificationToken);
+  if (!verificationToken) return { error: "Failed to Generate Verification Token!" };
+
+  const sent = await sendVerificationEmail(verificationToken.email, verificationToken.token);
+
+  if (!sent) return { error: "Failed to Send Confirmation Email!" };
 
   return { success: "Congratulations🎉🎊 User Registered and Confirmation email sent!" };
 };

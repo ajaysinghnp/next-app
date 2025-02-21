@@ -9,9 +9,11 @@ export const env = createEnv({
     AUTH_SECRET: z.string(),
     SALT_ROUNDS: z.coerce.number(),
     DATABASE_URL: z.string().url(),
+    RESEND_API_KEY: z.string(),
+    PUBLIC_URL: z.string().url(),
   },
   onValidationError: (issues: readonly StandardSchemaV1.Issue[]) => {
-    console.error("❌ Invalid environment variables:", issues);
+    console.error("⨯ Invalid environment variables:", issues);
     throw new Error("Invalid environment variables");
   },
   emptyStringAsUndefined: true,
