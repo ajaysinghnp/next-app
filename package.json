@@ -9,11 +9,11 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write .",
-    "push": "npm exec prisma db push",
-    "seed": "npm exec prisma db seed",
-    "generate": "npm exec prisma generate",
-    "studio": "npm exec prisma studio",
-    "migrate": "npm exec prisma migrate dev"
+    "push": "pnpm exec prisma db push",
+    "seed": "pnpm exec prisma db seed",
+    "generate": "pnpm exec prisma generate",
+    "studio": "pnpm exec prisma studio",
+    "migrate": "pnpm exec prisma migrate dev"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.7.4",
@@ -72,5 +72,14 @@
     "tailwindcss": "^3.4.1",
     "ts-node": "^10.9.2",
     "typescript": "^5"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@prisma/client",
+      "@prisma/engines",
+      "esbuild",
+      "prisma",
+      "sharp"
+    ]
   }
 }
