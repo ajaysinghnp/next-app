@@ -4,7 +4,7 @@ import { BadgeCheck, Bell, ChevronsUpDown, CreditCard, LogOut, Sparkles } from "
 import { useSession } from "next-auth/react";
 
 import { logOut } from "@/actions/authentication/login";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import CurrentUserInfo from "@/components/blocks/nav-user-info";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -15,7 +15,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from "@/components/ui/sidebar";
-import { initials } from "@/lib/strings";
 
 export const NavUser = () => {
   const { isMobile } = useSidebar();
@@ -23,6 +22,11 @@ export const NavUser = () => {
   const session = useSession();
   let user = null;
   if (session.status === "authenticated") user = session.data?.user;
+
+
+  if (session.status !== "authenticated") return (
+    <p className="text-center">Loading...</p>
+  );
 
   return (
     <SidebarMenu>
@@ -33,16 +37,9 @@ export const NavUser = () => {
               size="lg"
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
             >
-              <Avatar className="h-8 w-8 rounded-lg">
-                <AvatarImage src={user?.image as string} alt={user?.name as string} />
-                <AvatarFallback className="rounded-lg">{initials(user?.name as string)}</AvatarFallback>
-              </Avatar>
-              <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-semibold">
-                  {user?.name} ({user?.role})
-                </span>
-                <span className="truncate text-xs">{user?.email}</span>
-              </div>
+              {user && (
+                <CurrentUserInfo {...user} />
+              )}
               <ChevronsUpDown className="ml-auto size-4" />
             </SidebarMenuButton>
           </DropdownMenuTrigger>
@@ -54,16 +51,9 @@ export const NavUser = () => {
           >
             <DropdownMenuLabel className="p-0 font-normal">
               <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
-                <Avatar className="h-8 w-8 rounded-lg">
-                  <AvatarImage src={user?.image as string} alt={user?.name as string} />
-                  <AvatarFallback className="rounded-lg">{initials(user?.name as string)}</AvatarFallback>
-                </Avatar>
-                <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-semibold">
-                    {user?.name}({user?.role})
-                  </span>
-                  <span className="truncate text-xs">{user?.email}</span>
-                </div>
+                {user && (
+                  <CurrentUserInfo {...user} />
+                )}
               </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
