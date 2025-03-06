@@ -39,9 +39,16 @@ export const DEFAULT_LOGIN_REDIRECT = dashboardPrefix;
  * An array of routes that are publicly accessible
  * These routes will not be checked for authentication
  * @type {string[]} publicRoutes
- */
+*/
 
-export const publicRoutes = ["/"];
+/**
+ * Route for email verification page
+ * Used for confirming user email addresses
+ * @type {string}
+ */
+export const emailVerifyPath = "/auth/verify/email";
+
+export const publicRoutes = ["/", emailVerifyPath];
 
 /**
  * Routes should be accessible publicly for authentication to work
@@ -66,18 +73,19 @@ export const registerPath = "/auth/register";
 export const passwordResetPath = "/auth/password-reset";
 
 /**
+ * The URL path for the new password page.
+ * Used for routing to the password reset confirmation page.
+ * @constant
+ * @type {string}
+ */
+export const newPasswordPath = "/auth/new-password";
+
+/**
  * Route for authentication error page
  * Displayed when authentication fails
  * @type {string}
  */
 export const authErrorPath = "/auth/error";
-
-/**
- * Route for email verification page
- * Used for confirming user email addresses
- * @type {string}
- */
-export const emailVerifyPath = "/auth/verify/email";
 
 /**
  * Routes should be accessible publicly for authentication to work
@@ -89,6 +97,6 @@ export const authRoutes = [
   loginRoute,
   registerPath,
   passwordResetPath,
-  authErrorPath,
-  emailVerifyPath
+  newPasswordPath,
+  authErrorPath
 ];

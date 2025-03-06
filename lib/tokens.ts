@@ -1,4 +1,6 @@
 import { db } from "@/lib/db";
+import { getVerificationTokenByEmail } from "@/lib/tokens/email-verification";
+import { getPasswordResetTokenByEmail } from "@/lib/tokens/password-reset";
 
 export const genrateVerificationToken = async (email: string) => {
   try {
@@ -30,30 +32,30 @@ export const genrateVerificationToken = async (email: string) => {
   }
 };
 
-export const getVerificationTokenByToken = async (token: string) => {
+export const generatePasswordResetToken = async (email: string) => {
   try {
-    const verfificationToken = db.verificationToken.findUnique({
-      where: {
-        token,
-      },
-    });
+    const token = Math.random().toString(36).substring(2, 15);
+    const expires = new Date(new Date().getTime() + 60 * 60 * 1000);
 
-    return verfificationToken;
-  } catch (error) {
-    console.error(error);
-    return null;
-  }
-};
+    const existingToken = await getPasswordResetTokenByEmail(email);
 
-export const getVerificationTokenByEmail = async (email: string) => {
-  try {
-    const verfificationToken = db.verificationToken.findFirst({
-      where: {
+    if (existingToken) {
+      await db.passwordResetToken.delete({
+        where: {
+          id: existingToken.id,
+        },
+      });
+    }
+
+    const passwordResetToken = db.passwordResetToken.create({
+      data: {
         email,
+        token,
+        expires,
       },
     });
 
-    return verfificationToken;
+    return passwordResetToken;
   } catch (error) {
     console.error(error);
     return null;

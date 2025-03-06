@@ -1,7 +1,10 @@
+import { ResetForm } from "@/components/authentication/reset-form";
 
 const PasswordReset = () => {
   return (
-    <div>PasswordReset</div>
+    <main className="w-full max-w-sm drop-shadow-md shadow-slate-800 shadow-md">
+      <ResetForm />
+    </main>
   );
 };
 
