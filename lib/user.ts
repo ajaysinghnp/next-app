@@ -50,3 +50,19 @@ export const registerUser = async (data: z.infer<typeof RegisterSchema>) => {
 
   return { success: "Congratulations🎉🎊 User Registered Successfully!" };
 };
+
+export const updatePassword = async (id: string, password: string) => {
+  try {
+    await db.user.update({
+      where: { id },
+      data: {
+        password,
+      },
+    });
+  } catch (error) {
+    console.log(error);
+    return { error: "Something went wrong while updating the password!" };
+  }
+
+  return { success: "Password updated successfully!" };
+};
