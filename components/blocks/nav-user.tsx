@@ -19,14 +19,16 @@ import { SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from "@/c
 export const NavUser = () => {
   const { isMobile } = useSidebar();
 
-  const session = useSession();
-  let user = null;
-  if (session.status === "authenticated") user = session.data?.user;
+  const { data: session, status } = useSession();
+  if (status === "loading") {
+    return <p className="text-center">Loading...</p>;
+  }
 
+  if (status === "unauthenticated") {
+    return null; // or return a sign-in button/component
+  }
 
-  if (session.status !== "authenticated") return (
-    <p className="text-center">Loading...</p>
-  );
+  const user = session?.user;
 
   return (
     <SidebarMenu>
