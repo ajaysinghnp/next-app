@@ -16,8 +16,9 @@ import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { RegisterSchema } from "@/schemas/auth";
 
-import { FormButton } from "../forms/button";
-import { ClearButton } from "../forms/clear-button";
+import { FormButton } from "@/components/forms/button";
+import { ClearButton } from "@/components/forms/clear-button";
+import { loginRoute } from "@/config/routes";
 
 export const RegisterForm = ({ className, ...props }: React.ComponentPropsWithoutRef<"div">) => {
   const [success, setSuccess] = useState<string | undefined>(undefined);
@@ -62,7 +63,7 @@ export const RegisterForm = ({ className, ...props }: React.ComponentPropsWithou
         description="Enter your details below to register to your account"
         footer_text="Already have an account?"
         footer_link="Go to Login"
-        footer_href="/auth/login"
+        footer_href={loginRoute}
         social
       >
         <Form {...form}>

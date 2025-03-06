@@ -16,6 +16,7 @@ import { FormError } from "@/components/forms/form-error";
 import { FormSuccess } from "@/components/forms/form-success";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { passwordResetPath, registerPath } from "@/config/routes";
 import { parseURLError } from "@/lib/authentication";
 import { cn } from "@/lib/utils";
 import { LoginSchema } from "@/schemas/auth";
@@ -69,7 +70,7 @@ export const LoginForm = ({ className, ...props }: React.ComponentPropsWithoutRe
         description="Enter your email below to login to your account"
         footer_text="Don't have an account?"
         footer_link="Request for Sign up"
-        footer_href="/auth/register"
+        footer_href={registerPath}
         social
       >
         <Form {...form}>
@@ -97,7 +98,7 @@ export const LoginForm = ({ className, ...props }: React.ComponentPropsWithoutRe
                     <div className="flex items-center">
                       <FormLabel>Password</FormLabel>
                       <a
-                        href="#"
+                        href={passwordResetPath}
                         className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
                         tabIndex={1}
                       >

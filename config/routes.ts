@@ -49,4 +49,46 @@ export const publicRoutes = ["/"];
  * These routes will redirect to the dashboard or predefined route if the user is already authenticated
  * @type {string[]} privateRoutes
  */
-export const authRoutes = [loginRoute, "/auth/register", "/auth/error", "/auth/verify/email"];
+/**
+
+/**
+ * Route for registration page
+ * Used for new user sign up
+ * @type {string}
+ */
+export const registerPath = "/auth/register";
+
+/**
+ * Route for password reset page
+ * Used for password recovery
+ * @type {string}
+ */
+export const passwordResetPath = "/auth/password-reset";
+
+/**
+ * Route for authentication error page
+ * Displayed when authentication fails
+ * @type {string}
+ */
+export const authErrorPath = "/auth/error";
+
+/**
+ * Route for email verification page
+ * Used for confirming user email addresses
+ * @type {string}
+ */
+export const emailVerifyPath = "/auth/verify/email";
+
+/**
+ * Routes should be accessible publicly for authentication to work
+ * An array of routes that are used for authentication
+ * These routes will redirect to the dashboard if the user is already authenticated
+ * @type {string[]}
+ */
+export const authRoutes = [
+  loginRoute,
+  registerPath,
+  passwordResetPath,
+  authErrorPath,
+  emailVerifyPath
+];
