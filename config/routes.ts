@@ -39,7 +39,7 @@ export const DEFAULT_LOGIN_REDIRECT = dashboardPrefix;
  * An array of routes that are publicly accessible
  * These routes will not be checked for authentication
  * @type {string[]} publicRoutes
-*/
+ */
 
 /**
  * Route for email verification page
@@ -93,10 +93,4 @@ export const authErrorPath = "/auth/error";
  * These routes will redirect to the dashboard if the user is already authenticated
  * @type {string[]}
  */
-export const authRoutes = [
-  loginRoute,
-  registerPath,
-  passwordResetPath,
-  newPasswordPath,
-  authErrorPath
-];
+export const authRoutes = [loginRoute, registerPath, passwordResetPath, newPasswordPath, authErrorPath];

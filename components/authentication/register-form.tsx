@@ -9,16 +9,15 @@ import { z } from "zod";
 
 import { register } from "@/actions/authentication/register";
 import { AuthCard } from "@/components/authentication/card";
+import { FormButton } from "@/components/forms/button";
+import { ClearButton } from "@/components/forms/clear-button";
 import { FormError } from "@/components/forms/form-error";
 import { FormSuccess } from "@/components/forms/form-success";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { loginRoute } from "@/config/routes";
 import { cn } from "@/lib/utils";
 import { RegisterSchema } from "@/schemas/auth";
-
-import { FormButton } from "@/components/forms/button";
-import { ClearButton } from "@/components/forms/clear-button";
-import { loginRoute } from "@/config/routes";
 
 export const RegisterForm = ({ className, ...props }: React.ComponentPropsWithoutRef<"div">) => {
   const [success, setSuccess] = useState<string | undefined>(undefined);

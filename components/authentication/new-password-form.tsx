@@ -1,5 +1,6 @@
 "use client";
 
+import { useSearchParams } from "next/navigation";
 import { useEffect, useState, useTransition } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -18,7 +19,6 @@ import { Input } from "@/components/ui/input";
 import { loginRoute } from "@/config/routes";
 import { cn } from "@/lib/utils";
 import { NewPasswordSchema } from "@/schemas/auth";
-import { useSearchParams } from "next/navigation";
 
 export const NewPasswordForm = ({ className, ...props }: React.ComponentPropsWithoutRef<"div">) => {
   const [success, setSuccess] = useState<string | undefined>(undefined);

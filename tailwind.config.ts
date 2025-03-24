@@ -38,7 +38,7 @@ export default {
           "50%": { "background-position": "100% 50%" },
         },
       },
-      }
     },
-    plugins: [tailwindcssAnimate],
-  } satisfies Config;
+  },
+  plugins: [tailwindcssAnimate],
+} satisfies Config;

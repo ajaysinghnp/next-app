@@ -11,7 +11,7 @@ export const changePassword = async (password: string, token: string) => {
   }
 
   const validation = NewPasswordSchema.safeParse({ password });
-  
+
   if (!validation.success) {
     return { error: "Invalid new Password!" };
   }
@@ -21,7 +21,7 @@ export const changePassword = async (password: string, token: string) => {
   if (!existingToken) {
     return { error: "Invalid Token!" };
   }
-  
+
   const hasExpired = new Date() > new Date(existingToken.expires);
 
   if (hasExpired) {
