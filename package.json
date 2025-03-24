@@ -14,7 +14,8 @@
     "generate": "npm exec prisma generate",
     "studio": "npm exec prisma studio",
     "migrate": "npm exec prisma migrate dev",
-    "gen:env": "npx helper gen-env -s -n .env -N .sample.env"
+    "gen:env": "npx helper gen-env -s -n .env -N .sample.env",
+    "prepare": "husky"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.8.0",
@@ -68,6 +69,7 @@
     "eslint-plugin-n": "^17.16.2",
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^5.2.0",
+    "husky": "^9.1.7",
     "postcss": "^8.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "prisma": "^6.5.0",
