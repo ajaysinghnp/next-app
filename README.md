@@ -14,6 +14,7 @@ Although we have came a long way. There is still room to improve.
 - [ ] User Management
 - [x] Login (Authentication System)
 - [ ] Role Based Access Management (RBAC) (Authorization)
+- [ ] Convert edge runtime to nodejs runtime (possibly)
 
 ## Getting Started
 

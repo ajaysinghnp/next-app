@@ -13,7 +13,8 @@
     "seed": "npm exec prisma db seed",
     "generate": "npm exec prisma generate",
     "studio": "npm exec prisma studio",
-    "migrate": "npm exec prisma migrate dev"
+    "migrate": "npm exec prisma migrate dev",
+    "gen:env": "npx helper gen-env -s -n .env -N .sample.env"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.8.0",
