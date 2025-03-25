@@ -1,4 +1,3 @@
-pnpm lint
+pnpm lint-staged
 pnpm gen:env
 pnpm format
-git add .

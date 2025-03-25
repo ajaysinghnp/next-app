@@ -88,5 +88,8 @@
       "prisma",
       "sharp"
     ]
+  },
+  "lint-staged": {
+    "*": "./scripts/lint-staged.sh"
   }
 }

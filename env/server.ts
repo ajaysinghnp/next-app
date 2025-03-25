@@ -14,6 +14,8 @@ export const env = createEnv({
   },
   onValidationError: (issues: readonly StandardSchemaV1.Issue[]) => {
     console.error("⨯ Invalid environment variables:", issues);
+    // eslint-disable-next-line n/no-process-env
+    console.log(process.env);
     throw new Error("Invalid environment variables");
   },
   emptyStringAsUndefined: true,

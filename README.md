@@ -11,6 +11,7 @@ Although we have came a long way. There is still room to improve.
   - [x] Prisma Setup
   - [x] User and authentication Models
   - [ ] Search using Providers
+  - [ ] Eslint, Prettier, Husky and Lint-Staged Setup
 - [ ] User Management
 - [x] Login (Authentication System)
 - [ ] Role Based Access Management (RBAC) (Authorization)
